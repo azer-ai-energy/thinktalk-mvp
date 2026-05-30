@@ -122,6 +122,7 @@ const topics = [
 ];
 
 let completedChallenges = 0;
+    let countdown;
 
 function showDailyChallenge() {
     document.getElementById("result").innerText =
@@ -138,10 +139,12 @@ function trackProgress() {
     document.getElementById("result").innerText =
     "Progress: You completed " + completedChallenges + " practice session(s).";
 }
-    function startTimer() {
     function stopTimer() {
     clearInterval(countdown);
 }
+
+    function startTimer() {
+
     let timeLeft = 60;
 
     document.getElementById("timer").innerHTML = timeLeft;
