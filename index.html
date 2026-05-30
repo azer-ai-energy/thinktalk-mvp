@@ -105,6 +105,7 @@
     <p id="timer">60</p>
 
 <button onclick="startTimer()">Start Speech</button>
+<button onclick="stopTimer()">Stop</button>
 </div>
 
 <script>
@@ -131,19 +132,21 @@ function showRandomTopic() {
     const randomIndex = Math.floor(Math.random() * topics.length);
     document.getElementById("result").innerText = topics[randomIndex];
 }
-
+let countdown;
 function trackProgress() {
     completedChallenges++;
     document.getElementById("result").innerText =
     "Progress: You completed " + completedChallenges + " practice session(s).";
 }
     function startTimer() {
-
+    function stopTimer() {
+    clearInterval(countdown);
+}
     let timeLeft = 60;
 
     document.getElementById("timer").innerHTML = timeLeft;
 
-    let countdown = setInterval(function () {
+    countdown = setInterval(function () {
 
         timeLeft--;
 
