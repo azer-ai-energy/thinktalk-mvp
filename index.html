@@ -5,11 +5,44 @@
 </head>
 <body>
     <h1>ThinkTalk MVP</h1>
+    <p>AI-powered speech practice app.</p>
 
-    <p>Welcome to ThinkTalk.</p>
+    <button onclick="showDailyChallenge()">Today's Challenge</button>
+    <button onclick="showRandomTopic()">Random Topic</button>
+    <button onclick="trackProgress()">Track Progress</button>
 
-    <button>Today's Challenge</button>
-    <button>Random Topic</button>
-    <button>Track Progress</button>
+    <h2>Your Exercise:</h2>
+    <p id="result">Click a button to start.</p>
+
+    <script>
+        const topics = [
+            "Speak for 60 seconds about your biggest achievement this year.",
+            "Describe a mistake you made and what you learned from it.",
+            "Explain why communication is important in business.",
+            "Tell a short story about a difficult decision.",
+            "Describe your ideal future career.",
+            "Explain why clean energy matters for Azerbaijan.",
+            "Give a short motivational speech to yourself.",
+            "Describe one habit you want to improve."
+        ];
+
+        let completedChallenges = 0;
+
+        function showDailyChallenge() {
+            document.getElementById("result").innerText =
+                "Today's challenge: Speak for 60 seconds about your main goal for this year.";
+        }
+
+        function showRandomTopic() {
+            const randomIndex = Math.floor(Math.random() * topics.length);
+            document.getElementById("result").innerText = topics[randomIndex];
+        }
+
+        function trackProgress() {
+            completedChallenges++;
+            document.getElementById("result").innerText =
+                "Progress: You completed " + completedChallenges + " practice session(s) today.";
+        }
+    </script>
 </body>
 </html>
