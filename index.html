@@ -100,7 +100,11 @@
     <h2>Your Exercise</h2>
 
     <p id="result">Click a button to start.</p>
+    
+    <h3>Speech Timer</h3>
+    <p id="timer">60</p>
 
+<button onclick="startTimer()">Start Speech</button>
 </div>
 
 <script>
@@ -133,7 +137,30 @@ function trackProgress() {
     document.getElementById("result").innerText =
     "Progress: You completed " + completedChallenges + " practice session(s).";
 }
+    function startTimer() {
 
+    let timeLeft = 60;
+
+    document.getElementById("timer").innerHTML = timeLeft;
+
+    let countdown = setInterval(function () {
+
+        timeLeft--;
+
+        document.getElementById("timer").innerHTML = timeLeft;
+
+        if (timeLeft <= 0) {
+
+            clearInterval(countdown);
+
+            document.getElementById("timer").innerHTML =
+                "Time is up!";
+
+        }
+
+    }, 1000);
+
+}
 </script>
 
 </body>
