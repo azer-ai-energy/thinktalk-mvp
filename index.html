@@ -2,7 +2,6 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>ThinkTalk MVP</title>
 
     <style>
@@ -22,13 +21,9 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        h1 {
-            color: #2563eb;
-        }
+        h1 { color: #2563eb; }
 
-        p {
-            font-size: 18px;
-        }
+        p { font-size: 18px; }
 
         button {
             background-color: #2563eb;
@@ -41,9 +36,7 @@
             font-size: 16px;
         }
 
-        button:hover {
-            background-color: #1d4ed8;
-        }
+        button:hover { background-color: #1d4ed8; }
 
         #result {
             margin-top: 20px;
@@ -51,123 +44,95 @@
             font-weight: bold;
             color: #333;
         }
-    @media (max-width: 768px) {
 
-    body {
-        padding: 10px;
-    }
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .container { padding: 20px; }
+            h1 { font-size: 36px; }
+            p { font-size: 20px; }
 
-    .container {
-        padding: 20px;
-    }
-
-    h1 {
-        font-size: 36px;
-    }
-
-    p {
-        font-size: 20px;
-    }
-
-    button {
-        display: block;
-        width: 100%;
-        margin: 10px 0;
-        font-size: 20px;
-        padding: 15px;
-    }
-}
+            button {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+                font-size: 20px;
+                padding: 15px;
+            }
+        }
     </style>
-
 </head>
 
 <body>
+    <div class="container">
+        <h1>🎤 ThinkTalk MVP</h1>
 
-<div class="container">
+        <p>Improve your public speaking through daily AI-inspired speech exercises.</p>
 
-    <h1>🎤 ThinkTalk MVP</h1>
+        <button onclick="showDailyChallenge()">Today's Challenge</button>
+        <button onclick="showRandomTopic()">Random Topic</button>
+        <button onclick="trackProgress()">Track Progress</button>
 
-    <p>
-        Improve your public speaking through daily AI-inspired speech exercises.
-    </p>
+        <h2>Your Exercise</h2>
+        <p id="result">Click a button to start.</p>
 
-    <button onclick="showDailyChallenge()">Today's Challenge</button>
+        <h3>Speech Timer</h3>
+        <p id="timer">60</p>
 
-    <button onclick="showRandomTopic()">Random Topic</button>
+        <button onclick="startTimer()">Start Speech</button>
+        <button onclick="stopTimer()">Stop</button>
+    </div>
 
-    <button onclick="trackProgress()">Track Progress</button>
+    <script>
+        const topics = [
+            "Speak for 60 seconds about your biggest achievement this year.",
+            "Describe a mistake you made and what you learned from it.",
+            "Explain why communication is important in business.",
+            "Tell a short story about a difficult decision.",
+            "Describe your ideal future career.",
+            "Explain why clean energy matters for Azerbaijan.",
+            "Give a short motivational speech to yourself.",
+            "Describe one habit you want to improve."
+        ];
 
-    <h2>Your Exercise</h2>
+        let completedChallenges = 0;
+        let countdown;
 
-    <p id="result">Click a button to start.</p>
-    
-    <h3>Speech Timer</h3>
-    <p id="timer">60</p>
-
-<button onclick="startTimer()">Start Speech</button>
-<button onclick="stopTimer()">Stop</button>
-</div>
-
-<script>
-
-const topics = [
-    "Speak for 60 seconds about your biggest achievement this year.",
-    "Describe a mistake you made and what you learned from it.",
-    "Explain why communication is important in business.",
-    "Tell a short story about a difficult decision.",
-    "Describe your ideal future career.",
-    "Explain why clean energy matters for Azerbaijan.",
-    "Give a short motivational speech to yourself.",
-    "Describe one habit you want to improve."
-];
-
-let completedChallenges = 0;
-    let countdown;
-
-function showDailyChallenge() {
-    document.getElementById("result").innerText =
-    "Today's challenge: Speak for 60 seconds about your main goal for this year.";
-}
-
-function showRandomTopic() {
-    const randomIndex = Math.floor(Math.random() * topics.length);
-    document.getElementById("result").innerText = topics[randomIndex];
-}
-
-function trackProgress() {
-    completedChallenges++;
-    document.getElementById("result").innerText =
-    "Progress: You completed " + completedChallenges + " practice session(s).";
-}
-    function stopTimer() {
-    clearInterval(countdown);
-}
-
-    function startTimer() {
-
-    let timeLeft = 60;
-
-    document.getElementById("timer").innerHTML = timeLeft;
-
-    countdown = setInterval(function () {
-
-        timeLeft--;
-
-        document.getElementById("timer").innerHTML = timeLeft;
-
-        if (timeLeft <= 0) {
-
-            clearInterval(countdown);
-
-            document.getElementById("timer").innerHTML =
-                "Time is up!";
-
+        function showDailyChallenge() {
+            document.getElementById("result").innerText =
+                "Today's challenge: Speak for 60 seconds about your main goal for this year.";
         }
 
-    }, 1000);
+        function showRandomTopic() {
+            const randomIndex = Math.floor(Math.random() * topics.length);
+            document.getElementById("result").innerText = topics[randomIndex];
+        }
 
-}
-</script>
+        function trackProgress() {
+            completedChallenges++;
+            document.getElementById("result").innerText =
+                "Progress: You completed " + completedChallenges + " practice session(s).";
+        }
 
+        function startTimer() {
+            clearInterval(countdown);
+
+            let timeLeft = 60;
+            document.getElementById("timer").innerHTML = timeLeft;
+
+            countdown = setInterval(function () {
+                timeLeft--;
+                document.getElementById("timer").innerHTML = timeLeft;
+
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                    document.getElementById("timer").innerHTML = "Time is up!";
+                }
+            }, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(countdown);
+        }
+    </script>
 </body>
 </html>
