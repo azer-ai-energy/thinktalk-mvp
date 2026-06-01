@@ -123,7 +123,13 @@
         "Language selected: " + lang.toUpperCase();
 
 }
-       function showDailyChallenge() {
+       const dailyChallenges = {
+    en: "Today's challenge: Speak for 60 seconds about your main goal for this year.",
+    ru: "Сегодняшнее задание: говорите 60 секунд о своей главной цели на этот год.",
+    az: "Bugünkü tapşırıq: bu il üçün əsas məqsədiniz haqqında 60 saniyə danışın."
+};
+        
+        function showDailyChallenge() {
     document.getElementById("result").innerText =
     dailyChallenges[currentLanguage];
 }
