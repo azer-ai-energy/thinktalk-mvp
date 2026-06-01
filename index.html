@@ -67,6 +67,9 @@
         <h1>🎤 ThinkTalk MVP</h1>
 
         <p>Improve your public speaking through daily AI-inspired speech exercises.</p>
+        <button onclick="setLanguage('en')">🇬🇧 English</button>
+        <button onclick="setLanguage('ru')">🇷🇺 Russian</button>
+        <button onclick="setLanguage('az')">🇦🇿 Azerbaijani</button>
 
         <button onclick="showDailyChallenge()">Today's Challenge</button>
         <button onclick="showRandomTopic()">Random Topic</button>
@@ -96,7 +99,16 @@
 
         let completedChallenges = 0;
         let countdown;
+        let currentLanguage = "en";
 
+        function setLanguage(lang) {
+
+    currentLanguage = lang;
+
+    document.getElementById("result").innerText =
+        "Language selected: " + lang.toUpperCase();
+
+}
         function showDailyChallenge() {
             document.getElementById("result").innerText =
                 "Today's challenge: Speak for 60 seconds about your main goal for this year.";
