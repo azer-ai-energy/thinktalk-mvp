@@ -86,16 +86,30 @@
     </div>
 
     <script>
-        const topics = [
-            "Speak for 60 seconds about your biggest achievement this year.",
-            "Describe a mistake you made and what you learned from it.",
-            "Explain why communication is important in business.",
-            "Tell a short story about a difficult decision.",
-            "Describe your ideal future career.",
-            "Explain why clean energy matters for Azerbaijan.",
-            "Give a short motivational speech to yourself.",
-            "Describe one habit you want to improve."
-        ];
+        const topics = {
+
+    en: [
+        "Speak for 60 seconds about your biggest achievement this year.",
+        "Describe a mistake you made and what you learned from it.",
+        "Explain why communication is important in business.",
+        "Tell a short story about a difficult decision."
+    ],
+
+    ru: [
+        "Расскажите о своем самом большом достижении в этом году.",
+        "Опишите ошибку и чему она вас научила.",
+        "Объясните, почему коммуникация важна в бизнесе.",
+        "Расскажите короткую историю о сложном решении."
+    ],
+
+    az: [
+        "Bu il ən böyük nailiyyətiniz haqqında danışın.",
+        "Buraxdığınız səhvi və ondan nə öyrəndiyinizi izah edin.",
+        "Ünsiyyətin biznesdə niyə vacib olduğunu izah edin.",
+        "Çətin bir qərar haqqında qısa hekayə danışın."
+    ]
+
+};
 
         let completedChallenges = 0;
         let countdown;
@@ -114,10 +128,14 @@
                 "Today's challenge: Speak for 60 seconds about your main goal for this year.";
         }
 
-        function showRandomTopic() {
-            const randomIndex = Math.floor(Math.random() * topics.length);
-            document.getElementById("result").innerText = topics[randomIndex];
-        }
+       function showRandomTopic() {
+
+    const randomIndex =
+        Math.floor(Math.random() * topics[currentLanguage].length);
+
+    document.getElementById("result").innerText =
+        topics[currentLanguage][randomIndex];
+}
 
         function trackProgress() {
             completedChallenges++;
